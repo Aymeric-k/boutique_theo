@@ -1,0 +1,374 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('../css/font/Inter-VariableFont_slnt\,wght.ttf');
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family:'Inter' ;
+    text-decoration: none;
+    list-style: none;
+}
+html{
+    height: 100%;
+}
+body{
+    background-color: #f8f6f7;
+    min-height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+footer{
+    width: 100%;
+    background-color: #f0f0f0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+}
+footer a, footer p {
+    color: #235af0;
+}
+footer a {
+    font-weight: 700;
+   
+}
+footer p:first-child{
+    padding: 5px;
+}
+@media (max-width: 850px) {
+    aside{
+        display: none;
+    }
+
+    
+    ul {
+        margin-bottom:40px;
+        
+    }
+    .bold{
+        font-weight: bold;
+    }
+    footer{
+        height: 75px;    
+    }
+
+    footer p:first-child{
+        padding: 5px;
+    }
+    .nav-gridbox-desktop{
+        display: none;
+    }
+    .cart{
+        height: 35px;
+        width: 35px;
+    }
+    .nav-gridbox-mobile {
+        display: grid;
+        grid-template-areas: "logo . . cart . burger";
+        grid-template-columns: 50px auto auto 50px 5px 50px;
+        gap: 17px;
+        width: 93%;
+        margin: 0px auto 0px;
+        padding: 8px 0px;
+        color: #235af0;
+        align-items: center;
+        
+    }
+    .logo-container{
+        grid-area: logo;
+        background-image: url(../img/f9409b26bf5814084a99b027ad86a58e.jpg);
+        background-size: contain;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        z-index: 15;
+    }
+    .invisible{
+        display: none;
+    }
+    
+    .nav-div {
+        height: 0;
+        transition: height 0.5s ease-out;
+        overflow: hidden;
+        /* z-index: auto; */
+        background-color: #235af0;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        
+    }
+    .socials{
+        
+        font-size: 20px;
+    }
+    .nav-menu{
+        grid-area: links;
+    }
+    .nav-menu a{
+        font-size: 60px;
+        color: white;
+    }
+    .socials a {
+        text-decoration: none;
+        color: black;
+
+    }
+    .content{
+        margin: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 100%;
+        width: 90%;
+    }
+    .nav-div.open {
+        height: 60vh;
+        position: absolute;
+        z-index: 14;
+       
+    }
+    .burger-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: burger;
+        z-index: 15;
+        width: max-content;
+        height: max-content;
+        
+    }
+    .cross-icon{
+        display: block;
+    }
+    .cross-icon.invisible{
+        display: none;
+    }
+    .cart-container {
+        grid-area: cart;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s ease-in-out;
+        height: max-content;
+        width: max-content;
+    }
+    .burger-menu svg {
+        width: 35px;
+        height: 35px;
+        
+    }
+    .cart-container, .logo-container{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeOut{
+        0% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(20px); }
+    }
+    .tourne {
+        animation: tourne 1s ease-in-out;
+    }
+    @keyframes tourne{
+        0% { rotate: 0deg; }
+        100% { rotate: 360deg; }
+    }
+    .animated-item {
+        opacity: 0; 
+        animation: fadeIn 0.3s ease-in-out forwards;
+        animation-play-state: paused;
+    }
+    
+    .animated-item.animate {
+        animation-play-state: running;
+    }
+    
+    .nav-menu .animated-item:nth-child(1),
+    .socials .animated-item:nth-child(1) {
+        animation-delay: 0.3s;
+    }
+    
+    .nav-menu .animated-item:nth-child(2),
+    .socials .animated-item:nth-child(2) {
+        animation-delay: 0.6s;
+    }
+    
+    .nav-menu .animated-item:nth-child(3),
+    .socials .animated-item:nth-child(3) {
+        animation-delay: 0.9s;
+    }
+    
+    .socials .animated-item:nth-child(4),
+    .nav-menu .animated-item:nth-child(4) {
+        animation-delay: 1.2s;
+    }
+    .animated-item-closed{
+        opacity: 1; 
+        animation: fadeOut 0.2s ease-in forwards;
+        animation-play-state: paused;
+    }
+    .animated-item-closed.animate {
+        animation-play-state: running;
+    }
+    .socials .animated-item-closed:nth-child(4),
+    .nav-menu .animated-item-closed:nth-child(4) {
+        animation-delay: 0.2s;
+    }
+    
+    .nav-menu .animated-item-closed:nth-child(3),
+    .socials .animated-item-closed:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    
+    .nav-menu .animated-item-closed:nth-child(2),
+    .socials .animated-item-closed:nth-child(2) {
+        animation-delay: 0.6s;
+    }
+    
+    .socials .animated-item-closed:nth-child(1),
+    .nav-menu .animated-item-closed:nth-child(1) {
+        animation-delay: 0.8s;
+    }
+}
+@media (min-width: 850px) {
+    h2{
+        font-size: 18px;
+        font-weight: normal;
+        padding-bottom: 5px;
+    }
+    body {
+        position: relative;
+        
+        margin: 0;
+        padding-bottom: 120px; /* la hauteur de votre footer */
+    }
+    
+    footer {
+        position: absolute;
+        bottom: 0;
+        height: 120px; /* la hauteur de votre footer */
+        width: 100%;
+    }
+    
+    .pres {
+        writing-mode: vertical-rl;
+        position: fixed;
+        bottom: 0;
+        right: 40px;
+        display: flex;
+        font-size: 18px;
+        color: #235af0;
+    }
+    .pres::after {
+        content: "";
+        display: block;
+        height: 90px;
+        width: 1px;
+        background-color: #235af0;
+        margin: 0 auto;
+    }
+    footer p:first-child{
+        padding: 16px;
+    }
+    .nav-gridbox-mobile, .nav-div{
+        display: none;
+    }
+    .cart-desktop{
+        height: 48px;
+        width: 48px;
+    }
+    
+    .nav-gridbox-desktop {
+        display: grid;
+        grid-template-areas: "logo . . .  nav . cart";
+        grid-template-columns: 100px auto auto auto 500px 50px 50px;
+        gap: 17px;
+        width: 95%;
+        margin: 17px auto 0px;
+        color: #235af0;
+        align-items: center;
+    }
+    .logo-container-desktop{
+        grid-area: logo;
+        background-image: url(../img/f9409b26bf5814084a99b027ad86a58e.jpg);
+        background-size: contain;
+        background-position: 50% 50%;
+        
+        border-radius: 50%;
+        height: 97px;
+        width: 97px;
+        z-index: 15;
+    }
+    .nav-menu-desktop{
+        grid-area: nav;
+
+    }
+    .nav-menu-desktop ul {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .nav-menu-desktop ul li a {
+       color: #235af0;
+       font-weight: bold;
+    }
+    .cart-container-desktop {
+        grid-area: cart;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s ease-in-out;
+    }
+    .aside-container {
+        position: fixed;
+        bottom: 120px; /* hauteur de votre pied de page */
+        right: 0;
+        height: calc(100vh - 120px); /* hauteur de la fenêtre moins la hauteur du pied de page */
+        overflow: hidden;
+    }
+    
+
+    
+    
+    .socials ul {
+        height: 388px; 
+        display: grid;
+        grid-template-columns: 50px; 
+        grid-gap: 20px; 
+        position: fixed;
+        left: 40px;
+        bottom: 120px;
+        align-items: center;
+    }
+    .socials ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .socials svg{
+        width: 50px;
+        height: 50px;
+        transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    }
+    .socials svg:hover{
+        
+        width: 75px;
+        height: 75px;
+    }
+    
+    
+}

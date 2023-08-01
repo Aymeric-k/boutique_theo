@@ -1,0 +1,172 @@
+@media (max-width: 850px) {
+    h1 {
+        text-align: center;
+        color: #235af0;
+    }
+
+    main{
+        margin-top: 30px;
+    }
+    main form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 85%;
+        margin: auto;
+        font-size: 16px;
+    }
+
+    input,
+    select {
+        border: none;
+        border-bottom: 2px solid rgb(83, 80, 80);
+        background-color: transparent;
+        transition: all 0.5s ease-in-out;
+    }
+
+    input:focus,
+    select:focus {
+        border: none;
+        border-bottom: 2px solid black;
+        width: 90%;
+        outline: none;
+    }
+
+    label {
+        margin-left: 20px;
+        padding: 10px 0px;
+        font-size: 18px;
+    }
+
+    .form-image {
+        display: none;
+    }
+
+  
+
+    .form-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .submit-row{
+        display: flex;
+    }
+
+
+    .input-group,
+    .input-row>label {
+        flex: 1;
+        margin-right: 0.5em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-group>label {
+        align-self: flex-start;
+        /* Ceci aligne le label à gauche */
+    }
+
+}
+
+  input[type="submit"] {
+        background-color: #235af0;
+        color: white;
+        border-radius: 15px;
+        width: 15%;
+        padding: 5px;
+        min-width: max-content;
+        border: none;
+        margin: 10px auto;
+
+    }
+
+@media (min-width: 850px) {
+    main {
+        width: 80%;
+        margin: auto;
+        border: 1px solid black;
+        position: relative; 
+        height: max-content;
+    }
+
+    h1 {
+        top: 20px;
+        position: absolute;
+        left: 13%;
+        color: #235af0;
+
+    }
+
+    form {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 80px;
+
+    }
+    label{
+        font-size: 20px;
+        font-weight: 500;
+        padding-bottom: 10px;
+    }
+    select{
+        width: 30%;
+    }
+    input{
+        width: 80%;
+    }
+    input,select{
+        height: 41px;
+        font-size: 18px;
+        padding-left:  10px;
+    }
+    .form-image {
+        height: max-content;
+
+    }
+    .input-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .input-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1em;
+    }
+
+    .form-content {
+        flex: 1;
+        display: flex;
+        align-content: space-around;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+        
+    }
+
+    .input-row textarea {
+        width: 100%;
+    }
+    .submit-row{
+        
+        
+
+        
+    }
+    .submit-row input{
+        position: absolute;
+        right: 20px;
+        bottom: 4px;
+        width: 20%;
+    }
+    @media (max-width:1050px) {
+        .form-image{
+            display: none;
+        }
+        
+    }
+}

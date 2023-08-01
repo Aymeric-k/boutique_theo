@@ -1,0 +1,208 @@
+@media (max-width: 850px) {
+    main, main div{
+        width: 95%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        margin-top: 46px;
+        padding: 10px;
+        color: #235af0;
+    }
+    h3::before{
+        content :"";
+        height: 1px;
+        width: 100px;
+        background-color: #235af0;
+        display: block;
+        margin-right: 5px;
+    }
+    h3{
+        align-items: center;
+        display: flex;
+        font-weight: 600;
+        color: black;
+        padding: 10px;
+        justify-content: center;
+        
+    }
+    h3::after{
+        content :"";
+        height: 1px;
+        width: 100px;
+        background-color: #235af0;
+        display: block;
+        margin-left: 5px;
+    }
+    .pict-container-mobile{
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 10px;
+        height: 332px;
+        width: 332px;
+    }
+    .recto{
+        background-image: url('../img/verso.jpg');
+       
+    }
+    .verso{
+        background-image: url('../img/recto.jpg');
+    }
+
+    
+    .bio{
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .pict-container-desktop, .pict-theo-desktop{
+        display: none;
+    }
+}
+@media (min-width: 850px) {
+    main{
+        width: 80%;
+        margin: auto;
+        position: relative;
+
+    }
+    h1{
+        display: none;
+    }
+    h3::before{
+        content :"";
+        height: 1px;
+        width: 100px;
+        background-color: #235af0;
+        display: block;
+        margin-right: 5px;
+    }
+    h3{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+   h3::after{
+        content :"";
+        height: 1px;
+        width: 100px;
+        background-color: #235af0;
+        display: block;
+        margin-left: 5px;
+    }
+    main section:first-child, main section:last-child{
+        display: grid;
+        
+        
+        grid-template-columns: auto 60px auto;
+        margin: 0 0 25px 50px;
+        
+    }
+    main section:first-child{
+        grid-template-areas:"pic . bio" ;
+    }
+    main section:last-child{
+        display: grid;
+        grid-template-areas: "bio . pic";
+        margin-bottom: 35px;
+    }
+    .pict-container-mobile{
+        display: none;
+    }
+    .pict-container-desktop {
+        grid-area: pic;
+        display: flex;
+        position: relative;
+        width: max-content;
+        height: max-content;
+        
+    }
+    
+    section:nth-of-type(1) .pict-container-desktop::before, section:nth-of-type(2) .pict-container-desktop::before {
+        content: "";
+        position: absolute;
+        background-color: #b7c9f3;
+       
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: opacity 0.5s ease, top 0.3s ease, right 0.3s ease, bottom 0.3s ease, left 0.3s ease; 
+    }
+    
+    
+    section:nth-of-type(1) .pict-container-desktop:hover::before {
+        opacity: 0;
+     
+    }
+    
+    section:nth-of-type(2) .pict-container-desktop:hover::before {
+        opacity: 0;
+      
+    }
+    
+    .pict-container-desktop:hover img {
+        filter: brightness(1.1); 
+       
+    }
+    
+    section:nth-of-type(1) .pict-container-desktop::after {
+        content: "";
+        position: absolute;
+        border: 5px solid #235af0;
+        top: 20px;
+        right: 20px;
+        bottom: -20px; 
+        left: -20px; 
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+    section:nth-of-type(2) .pict-container-desktop::after {
+        content: "";
+        position: absolute;
+        border: 5px solid #235af0;
+        top: 20px;
+        right: -20px;  
+        bottom: -20px;
+        left: 20px;
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+     .pict-container-desktop img{
+        object-fit: contain;
+        mix-blend-mode:multiply;
+        filter: grayscale(100%) contrast(1);
+
+
+        
+    }
+    .pict-container-desktop img:hover {
+        filter: none;  
+    }
+    
+    section:nth-of-type(1) .pict-container-desktop:hover::after,section:nth-of-type(2) .pict-container-desktop:hover::after {
+        top: 0px;  
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        z-index: -1;
+        opacity: 0;
+    }
+    
+    .bio{
+        grid-area: bio;
+        font-size: 24px ;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        text-align: justify;
+        
+
+    }
+}
