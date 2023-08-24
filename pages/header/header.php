@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$title?></title>
+    <title><?= $title ?></title>
     <meta name="description" content="Achetez des prints et stickers uniques et de haute qualité. Explorez ma collection variée pour tous les goûts et toutes les occasions. Livraison rapide à l'international.">
     <meta name="keywords" content="Prints, Stickers, Art, Boutique en ligne, Livraison internationale">
     <!-- <link rel="canonical" href="https://www.idk.com" /> -->
@@ -22,12 +26,12 @@
     <meta property="twitter:description" content="Achetez des prints et stickers uniques et de haute qualité. Explorez notre collection variée pour tous les goûts et toutes les occasions. Livraison rapide à l'international.">
     <!-- <meta property="twitter:image" content="URL_VERS_IMAGE"> -->
     <link rel="stylesheet" href="../../assets/css/header.css">
-    <link rel="stylesheet" href="../../assets/css/<?=$css?>.css">
-    
+    <link rel="stylesheet" href="../../assets/css/<?= $css ?>.css">
+
 </head>
 
 <body>
-    <header>
+    <header id="nav-block">
 
         <nav>
             <div class="nav-gridbox-desktop">
@@ -43,15 +47,31 @@
                             <a href="../pages/shop.php">shop</a>
                         </li>
                         <li>
-                        <a href="../pages/about.php">about</a>
+                            <a href="../pages/about.php">about</a>
                         </li>
                         <li>
                             <a href="../pages/contact.php">contact</a>
                         </li>
                     </ul>
                 </div>
-                <div class="cart-container-desktop">
-                    <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="##235af0" stroke-width="0.00024000000000000003" class="cart-desktop">
+                <div class="cart-container">
+                    <?php
+                    if(isset($_SESSION['panier'])){
+                        $totalItems=0;
+                        if (sizeof($_SESSION['panier'])>0) {
+                            foreach ($_SESSION['panier'] as $article) {
+                                $totalItems += $article['quantite'];
+                            }?>
+                        
+                            <div class="cart-count-container">
+                                <p id="cart-count"><?=$totalItems?></p>
+                            </div>
+                        <?php
+                        
+                    }
+                }
+                    ?>
+                    <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="##235af0" stroke-width="0.00024000000000000003" class="cart">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.288"></g>
                         <g id="SVGRepo_iconCarrier">
@@ -67,6 +87,15 @@
 
                 </div>
                 <div class="cart-container">
+                <?php
+                 if(isset($_SESSION['panier'])){
+                if (sizeof($_SESSION['panier'])>0) {?>
+                    <div class="cart-count-container">
+                        <p id="cart-count"><?=sizeof($_SESSION['panier'])?></p>
+                    </div>
+                <?php
+                }}
+                ?>
                     <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="##235af0" stroke-width="0.00024000000000000003" class="cart">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.288"></g>
@@ -107,7 +136,46 @@
                 </ul>
             </div>
         </div>
-        
+        <div class="cart-list">
+                <ul class="shopping-list">
+                    <?php
+                    if (isset($_SESSION['panier'])) {
+                        $total = 0;
+                            foreach ($_SESSION['panier'] as $article) {
+                                
+                            }
+                        
+                        foreach ($_SESSION['panier'] as $article) {
+                            echo '<li>';
+
+                            echo '<img src="' . $article['photoUrl'] . '" alt="' . $article['photoLegende'] . '">';
+                            echo '<div>';
+                            echo '              <p>' . $article['libelle'] . ' #' .  $article['produitId'] . '</p>';
+                            echo '<p>' . $article['format'] . ' <span>' . $article['prix'] . ' €</span> <a href="/pages/article.php?name=' . $article['libelle'] . '&id=' . $article['produitId'] . '">article page</a></p>';
+                            echo '<p> x ' . $article['quantite'] . '</p>';
+                            echo '</div>';
+                            echo '</li>';
+                            
+
+                            $total += $article['prix'] * $article['quantite'];
+                        }
+                    } else {
+                        echo '<li class="no-articles">Your basket is empty</li>';
+                    }
+                    ?>
+                </ul>
+                    <?php 
+
+                    ?>
+            <div class="subtotal-container">
+                <p>recap : <span class="item-count"><?=$totalItems?> items </span></p>
+                <p>Subtotal : <span class="subtotal-nbr"><?= $total ?> €</span> </p>
+            </div>
+            <div class="button-container">
+                <a href="/pages/cartDetails.php"><button>cart details</button></a>
+                <a href="/pages/cartDetails.php" class="checkout"><button>checkout</button></a>
+            </div>
+        </div>
     </header>
     <aside class="socials">
         <ul>
@@ -126,7 +194,7 @@
             </li>
             <li>
                 <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="dribbble" class="svg-logo" >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="dribbble" class="svg-logo">
                         <g data-name="<Group>">
                             <circle cx="12" cy="12" r="11.5" fill="none" stroke="#235af0" stroke-linecap="round" stroke-linejoin="round" data-name="<Path>" class="behance"></circle>
                             <g data-name="<Group>">
@@ -153,4 +221,3 @@
             </li>
         </ul>
     </aside>
-

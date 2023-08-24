@@ -1,5 +1,6 @@
-const cartContainer = document.querySelector(".cart-container");
-const cart = document.querySelector(".cart")
+const cartContainers = document.querySelectorAll(".cart-container");
+const carts = document.querySelectorAll(".cart")
+const cartList = document.querySelector(".cart-list")
 const burger = document.querySelector(".burger-icon");
 const navDiv = document.querySelector(".nav-div");
 const cross = document.querySelector(".cross-icon");
@@ -26,35 +27,61 @@ function resetAnimationClose(item, index) {
         }
     }, 100);
 }
-if (cartContainer) {
+cartContainers.forEach(cartContainer => {
+
     cartContainer.addEventListener("click", (e) => {
-        cartContainer.style.backgroundColor = '#235af0'
         e.stopPropagation();
-        cart.querySelectorAll("path").forEach(path => {
-            path.setAttribute("fill", "white");
-        });
 
+        if (cartList.classList.contains('open')) {
+
+            cartContainer.style.backgroundColor = 'transparent';
+            cartList.classList.remove('open');
+
+            carts.forEach(cart => {
+                cart.querySelectorAll("path").forEach(path => {
+                    path.setAttribute("fill", "#235af0");
+                });
+            });
+        } else {
+
+            cartContainer.style.backgroundColor = '#235af0';
+            cartList.classList.add('open');
+
+            carts.forEach(cart => {
+                cart.querySelectorAll("path").forEach(path => {
+                    path.setAttribute("fill", "white");
+                });
+            });
+        }
+    });
+});
+document.addEventListener('click', (event) => {
+    // Si cartList ne contient pas l'élément cliqué (event.target)
+    if (!cartList.contains(event.target)) {
+        cartList.classList.remove('open');
+        cartContainers.forEach(cartContainer => {
+            cartContainer.style.backgroundColor = 'transparent';
+            carts.forEach(cart => {
+                cart.querySelectorAll("path").forEach(path => {
+                    path.setAttribute("fill", "#235af0");
+                });
+            });
+        });
+    }
+});
+
+
+
+burger.addEventListener("click", () => {
+    navDiv.classList.add('open');
+    burger.classList.add('invisible');
+    cross.classList.remove('invisible');
+    cross.classList.remove('tourne');
+    animatedItems.forEach((item, index) => {
+        resetAnimation(item, index);
     });
 
-    document.addEventListener('click', () => {
-        cartContainer.style.backgroundColor = 'transparent'
-        cart.querySelectorAll("path").forEach(path => {
-            path.setAttribute("fill", "#235af0");
-        });
-    });
-}
-
-    burger.addEventListener("click", () => {
-        navDiv.classList.add('open');
-        burger.classList.add('invisible');
-        cross.classList.remove('invisible');
-        cross.classList.remove('tourne');
-        console.log("divvvv")
-        animatedItems.forEach((item, index) => {
-            resetAnimation(item, index);
-        });
-
-    });
+});
 
 if (cross) {
 

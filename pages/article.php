@@ -14,15 +14,15 @@ $sql->execute(['produitId' => $_GET['id']]);
 $results = $sql->fetchAll();
 
 
-$article = $results[0];
-$title = $article['produitLibelle'];
+$item = $results[0];
+$title = $item['produitLibelle'];
 $pictures = array_map(function ($row) {
     return ['photoUrl' => $row['photoUrl'], 'photoLegende' => $row['photoLegende']];
 }, $results);
 
 include './header/header.php';
 
-$sqlVariants = $db->prepare('SELECT variantId, variantPrix, variantFormat FROM variant_produit WHERE produitId = :produitId AND variantHorsStock = 0 ORDER BY variantPrix ASC');
+$sqlVariants = $db->prepare('SELECT variantId, variantPrix, variantFormat, produitId FROM variant_produit WHERE produitId = :produitId AND variantHorsStock = 0 ORDER BY variantPrix ASC');
 $sqlVariants->execute(['produitId' => $_GET['id']]);
 $variants = $sqlVariants->fetchAll();
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5; // valeur par défaut
@@ -63,8 +63,9 @@ AND
     ORDER BY RAND()
 LIMIT 4;
 ');
-$sqlothers->execute(['produitId' => $_GET['id'], 'categorie' => $article['categorieId']]);
+$sqlothers->execute(['produitId' => $_GET['id'], 'categorie' => $item['categorieId']]);
 $others = $sqlothers->fetchAll();
+
 
 ?>
 
@@ -73,7 +74,7 @@ $others = $sqlothers->fetchAll();
     <nav aria-label="Breadcrumb">
         <ol class="breadcrumb">
             <li><a href="/pages/shop.php">Shop</a></li>
-            <li aria-current="page"><?= $article['produitLibelle'] ?></li>
+            <li aria-current="page"><?= $item['produitLibelle'] ?></li>
         </ol>
     </nav>
 
@@ -83,7 +84,7 @@ $others = $sqlothers->fetchAll();
             <div class="carousel-slide">
                 <?php
                 foreach ($pictures as $picture) {
-                    echo '<img src="' . $picture['photoUrl'] . '" alt="' . $picture['photoLegende'] . '" class ="carousel-slide-image" loading="lazy">';
+                    echo '<img src="' . $picture['photoUrl'] . '" alt="' . $picture['photoLegende'] . '" class ="carousel-slide-image">';
                 }
                 ?>
             </div>
@@ -102,49 +103,50 @@ $others = $sqlothers->fetchAll();
             <div class="right-col-wrapper">
                 <div class="details">
                     <?php
-                    echo '<p class="id"> <span>#' . $article['produitId'] . '</span> ' . '<span>' . $article['produitLibelle'] . '</span></p>';
+                    echo '<p class="id"> <span>#' . $item['produitId'] . '</span> ' . '<span>' . $item['produitLibelle'] . '</span></p>';
                     if (sizeof($variants) > 1) {
                         echo '<p class="price">  </p>';
                     } else {
-                        echo '<p class="price">' . $variants[0]['variantPrix'] . '  </p>';
+                        echo '<p class="price">' . $variants[0]['variantPrix'] . ' €  </p>';
                     }
                     ?>
 
                 </div>
-                <div class="variants">
-                    <p id="sizeLabel">Size :</p>
-                    <?php
-                    if (sizeof($variants) > 1) {
-                        foreach ($variants as $variant) {
-                            echo '<button class="variant-btn mobile-btn" data-variant-id="' . $variant['variantId'] . '" data-variant-price="' . $variant['variantPrix'] . '">' . $variant['variantFormat'] . '</button>';
-                        }
-                    ?>
-                        <select class="sizeSelect" aria-labelledby="sizeLabel">
+                <form action="" method="post" id="formAddToCart">
+                    <div class="variants">
+                        <label for="size" id="sizeLabel">Size :</label>
                         <?php
-                        foreach ($variants as $variant) {
-                            echo '<option value="' . $variant['variantId'] . '">' . $variant['variantFormat'] . '</option>';
-                        }
-                    } else {
-                        echo '<p class ="sizeSelect">' . $variants[0]['variantFormat'] . '</p>';
+                        if (sizeof($variants) > 1) {
 
-                        echo '<input type="hidden" name="selectedVariant" value="' . $variants[0]['variantId'] . '">';
-                    }
+                            foreach ($variants as $variant) {
+
+                                $id = 'size_' . $variant['variantId'];
+                                echo '<input type="radio" class="variant-btn" id="' . $id . '" data-variant-price="' . $variant['variantPrix'] . '" value="' . $variant['variantId'] . '" name="size">';
+                                echo '<label for="' . $id . '" class="variant-label">' . $variant['variantFormat'] . '</label>';
+                            }
+                        } else {
+                            $id = 'size_' . $variants[0]['variantId'];
+                            echo '<input type="radio" class="variant-btn" id="' . $id .  '"data-variant-price="' . $variants[0]['variantPrix'] . '" value="' . $variants[0]['variantId'] . '" name="size" checked>';
+                            echo '<label for="' . $id . '" class="variant-label">' . $variants[0]['variantFormat'] . '</label>';
+                        }
+
                         ?>
-                        </select>
-                </div>
-                <div class="quantity-container">
-                    <label for="quantity">Quantity :</label>
-                    <button id="decrementBtn">-</button>
-                    <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
-                    <button id="incrementBtn">+</button>
-                </div>
-                <div class="cart-button-container">
-                    <button class="add-cart"> Add to cart <img src="../assets/img/icons8-caddie-48 2.png" alt=""> </button>
-                </div>
+                    </div>
+                    <div class="quantity-container">
+                        <label for="quantity">Quantity :</label>
+                        <button type="button" id="decrementBtn">-</button>
+                        <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
+                        <button id="incrementBtn" type="button">+</button>
+                    </div>
+                    <input type="hidden" value="<?= $variants[0]['produitId'] ?>" name="produitId">
+                    <div class="cart-button-container">
+                        <button type="submit" class="add-cart"> <span class="text-add">Add to cart</span> <img src="../assets/img/icons8-caddie-48 2.png" alt=""> <span class="checkmark fade-in">✔</span></button>
+                    </div>
+                </form>
                 <div class="description">
                     <p>Descrition :</p>
                     <?php
-                    echo '<p>' . nl2br($article['produitDescription']) . '</p>';
+                    echo '<p>' . nl2br($item['produitDescription']) . '</p>';
                     ?>
                 </div>
                 <div id="look-a-like">
@@ -171,6 +173,7 @@ $others = $sqlothers->fetchAll();
         </div>
     </section>
 </main>
+<script src="/assets/scripts/article.js"></script>
 
 
 
@@ -178,7 +181,6 @@ $others = $sqlothers->fetchAll();
 
 
 
-<script src="../assets/scripts/article.js" async></script>
 <?php
 include './header/footer.php';
 ?>

@@ -1,3 +1,76 @@
+
+.add-cart{
+    position: relative;
+    overflow: hidden;
+}
+.add-cart img{
+    width: 28px;
+}
+.checkmark {
+    display: none; 
+    position: absolute;
+    left: 50%;
+    font-size: 20px; 
+    z-index: 10; 
+    overflow: hidden;
+
+
+}
+.fade-in{
+    animation: fadingIn 2s forwards;
+}
+@keyframes fadingIn {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50%{
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(1500%);
+    }
+
+}
+
+#prevBtn {
+    left: 20px;
+    animation: movingL 1s ease-in-out infinite;
+}
+@keyframes movingL {
+    0% {
+        left: 20px
+    }
+
+    50% {
+        left: 10px
+    }
+
+    100% {
+        left: 20px
+    }
+}
+
+#nextBtn {
+    right: 20px;
+    animation: movingR 1s ease-in-out infinite;
+}
+
+@keyframes movingR {
+    0% {
+        right: 15px
+    }
+
+    50% {
+        right: 5px
+    }
+
+    100% {
+        right: 15px
+    }
+}
 @media (max-width: 850px) {
     main {
         width: 100%;
@@ -127,7 +200,8 @@
 
     .variants,
     .quantity-container,
-    .description, .padding-container {
+    .description,
+    .padding-container {
         display: flex;
         align-items: center;
         width: 90%;
@@ -175,8 +249,13 @@
         align-items: center;
         justify-content: center;
         color: white;
+        position: relative;
+        overflow: hidden;
+        height: 30px;
     }
-
+    .add-cart span{
+        margin-right: 5px;
+    }
     .description p:nth-child(2) {
         padding-left: 5px;
         margin: 5px 0;
@@ -187,27 +266,29 @@
     .sizeSelect {
         display: none;
     }
-    .mobile-btn{
+
+    .mobile-btn {
         display: block;
     }
-    .padding-container{
+
+    .padding-container {
         padding: 15px 0;
         font-size: 20px;
-       
+
     }
-    .padding-container p {
-        
-    }
+
     #look-a-like ul {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
-     
+
     }
-    #look-a-like ul{
+
+    #look-a-like ul {
         border: 1px solid black;
     }
-    #look-a-like li p  {
+
+    #look-a-like li p {
         height: 40px;
         display: flex;
         justify-content: center;
@@ -215,12 +296,30 @@
         color: black;
         border-left: 1px solid black;
     }
-    #look-a-like li article{
+
+    #look-a-like li article {
         width: 100%;
         padding-top: 100%;
         background-size: contain;
         background-position: 50%;
     }
+}
+.variants input {
+    display: none;
+}
+
+.variant-label {
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.variants input:checked + .variant-label {
+    border: 2px solid #235af0;
 }
 
 .carousel-container {
@@ -251,7 +350,9 @@
     section {
         display: flex;
         margin-bottom: 20px;
-    }
+        align-items: stretch;
+
+            }
 
     section>div:nth-child(2) {
         width: 50%;
@@ -261,8 +362,16 @@
         width: max-content;
         text-align: center;
     }
+    input{
+       margin:  10px 0;
+    }
+    form{
+        display: flex;
+        flex-direction: column ;
+        justify-content: space-between;
+        height: 150px;
 
-
+    }
 
     .right-col-wrapper {
         box-sizing: border-box;
@@ -273,10 +382,11 @@
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: space-between;
+        flex-grow: 1;
 
     }
 
-    .right-col-wrapper>div {
+    .right-col-wrapper>div, .right-col-wrapper>form{
         padding: 0 10%;
     }
 
@@ -340,7 +450,7 @@
 
     .price {
         position: absolute;
-        top: 32%;
+        top: 24%;
         right: 10%;
         font-size: 32px;
     }
@@ -348,17 +458,20 @@
     .carousel-container {
         width: 50%;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        
     }
 
-    .carousel-container button {
-        display: none;
-    }
+    
 
     .carousel-indicators {
         display: flex;
         justify-content: center;
         padding: 20px 0;
         border: 1px solid black;
+        align-items: center;
     }
 
     .indicator {
@@ -378,7 +491,7 @@
     .variants {
         display: flex;
         justify-content: space-between;
-        width: 30%;
+        width: 60%;
         align-items: center;
     }
 
@@ -413,20 +526,33 @@
     }
 
     .add-cart {
-        width: 100%;
-        background-color: transparent;
+        width: 70%;
         border-radius: 15px;
         font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: #235af0;
+        color: white;
+        font-weight: 600;
+        border: none;
+        height: 30px;
+        margin:  10px auto;
+      
+    }
+    .add-cart span{
+        margin-right: 20px;
+    }
+   
+    #incrementBtn,#decrementBtn{
+        padding-bottom: 4px;
     }
 
     .quantity-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 50%;
+        width: 60%;
     }
 
     .quantity-container button {
@@ -475,7 +601,7 @@
         box-sizing: border-box;
         display: flex;
         align-items: center;
-        
+
 
         width: 100%;
     }
@@ -484,7 +610,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: auto;
-     
+
     }
 
     #look-a-like li {
@@ -495,10 +621,12 @@
 
         text-align: center;
     }
-    #look-a-like li p{
+
+    #look-a-like li p {
         color: black;
         justify-content: center;
     }
+
     #look-a-like li article {
         width: 100%;
         padding-top: 100%;
@@ -507,16 +635,40 @@
 
     }
 
+   
+
+
 }
 
-@media (min-width : 850px) and  (max-width: 1150px) {
 
-    #sizeLabel,
-    label {
+
+@media (min-width : 850px) and (max-width: 1350px) {
+
+    .right-col-wrapper .variants{
         font-size: 16px;
     }
-
-    .variants {
-        width: 30%;
+    .add-cart{
+        font-size: 18px;
+    }
+    .description{
+        font-size: 16px;
+    }
+    .id{
+        height: 50px;
+    }
+    .price{
+        font-size: 20px;
+        top: 19%;
+    }
+    .carousel-indicators{
+        flex: 1 1;
+        display: flex;
+    }
+    .indicator{
+        width: 90px;
+        height: 60px;
+    }
+    .variant-label{
+        margin: 5px 0;
     }
 }

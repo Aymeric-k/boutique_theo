@@ -123,38 +123,38 @@ $products = $sql->fetchAll();
     const categoryLinks = document.querySelectorAll(".categories-list a");
 
 
-    categoryLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
+categoryLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
 
-            const category = this.textContent.trim().toLowerCase();
+        const category = this.textContent.trim().toLowerCase();
 
 
-            if (this.classList.contains("active")) {
-                this.classList.remove("active");
+        if (this.classList.contains("active")) {
+            this.classList.remove("active");
 
-                const products = document.querySelectorAll(".product");
-                products.forEach(product => {
+            const products = document.querySelectorAll(".product");
+            products.forEach(product => {
+                product.style.display = "block";
+            });
+        } else {
+
+            categoryLinks.forEach(innerLink => {
+                innerLink.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const products = document.querySelectorAll(".product");
+            products.forEach(product => {
+                if (product.classList.contains(category)) {
                     product.style.display = "block";
-                });
-            } else {
-
-                categoryLinks.forEach(innerLink => {
-                    innerLink.classList.remove("active");
-                });
-                this.classList.add("active");
-
-                const products = document.querySelectorAll(".product");
-                products.forEach(product => {
-                    if (product.classList.contains(category)) {
-                        product.style.display = "block";
-                    } else {
-                        product.style.display = "none";
-                    }
-                });
-            }
-        });
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
     });
+});
 </script>
 <?php
 include './header/footer.php';

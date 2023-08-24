@@ -77,7 +77,7 @@
         color: white;
         border-radius: 15px;
         width: 15%;
-        padding: 5px;
+        padding: 5px 10px;
         min-width: max-content;
         border: none;
         margin: 10px auto;
@@ -151,17 +151,15 @@
     .input-row textarea {
         width: 100%;
     }
-    .submit-row{
-        
-        
 
-        
-    }
     .submit-row input{
         position: absolute;
         right: 20px;
         bottom: 4px;
         width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     @media (max-width:1050px) {
         .form-image{

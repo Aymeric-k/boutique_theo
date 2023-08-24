@@ -1,6 +1,7 @@
-.shop-list a{
+.shop-list a {
     color: black;
 }
+
 .categories-list {
     list-style-type: none;
     padding: 0;
@@ -18,87 +19,102 @@
     color: #235af0;
     text-transform: lowercase;
     font-size: 20px;
+
 }
+
 .categories-list a.active {
     font-weight: bold;
 }
-.pict-container img{
+
+.pict-container img {
     max-width: 100%;
     max-height: 100%;
     display: block;
 }
-.informations{
+
+.informations {
     display: flex;
     border: 1px solid black;
     justify-content: space-around;
     height: 80px;
     align-items: center;
-    
-}
-.informations span{
-    font-weight: bold;
-}
-@media (max-width: 850px) {
-    main{
-        width: 90%;
-        margin:  5px auto;
-    }
-    
-    
-    h1{
-        visibility: hidden;
-    }
-    .shop-list{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 0;
-    }
-    .shop-list li:not(li:last-child){
-        margin-bottom: 50px;
-    }
-   
-    .informations{
-        font-size: 16px;
-    }
-    
-    .categories-list{
-        justify-content: center;
-    }
-    .categories-list li:not(:last-child)::after {
-        margin: 0 20px;
-    }
 
 }
+
+.informations span {
+    font-weight: bold;
+}
+
+main {
+    width: 90%;
+    margin: 5px auto;
+}
+
+
+h1 {
+    visibility: hidden;
+}
+
+.shop-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.shop-list li:not(li:last-child) {
+    margin-bottom: 50px;
+}
+
+.informations {
+    font-size: 16px;
+}
+
+.categories-list {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.categories-list li:not(:last-child)::after {
+    margin: 0 5px;
+}
+
+
 @media (min-width: 850px) {
-    h1{
+    h1 {
         visibility: hidden;
     }
-    main{
+
+    main {
         width: 80%;
-        margin:  0 auto;
+        margin: 0 auto;
     }
 
     .shop-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 15px; 
+        grid-gap: 15px;
         margin-bottom: 40px;
     }
-    .informations{
-       font-size: 20px;
+
+    .informations {
+        font-size: 20px;
     }
-    .categories-list{
+
+    .categories-list {
         margin-bottom: 40px;
     }
+
     .categories-list li:not(:last-child)::after {
         margin: 0 10px;
     }
 }
-@media (max-width: 1300px){
-    .informations{
+
+@media (max-width: 1300px) {
+    .informations {
         font-size: 18px;
     }
-    .shop-list{
+
+    .shop-list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
