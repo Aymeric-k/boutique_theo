@@ -1,6 +1,20 @@
 <?php
 session_start();
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+function remove_shipping_fees() {
+    if (isset($_SESSION['panier']) && is_array($_SESSION['panier'])) {
+        foreach ($_SESSION['panier'] as $key => $item) {
+            if ($item['libelle'] === 'Shipping fees') {
+                unset($_SESSION['panier'][$key]);
+            }
+        }
+        // Réindexer le panier pour éviter les clés non séquentielles
+        $_SESSION['panier'] = array_values($_SESSION['panier']);
+    }
+}
 
+// Appeler la fonction pour supprimer les frais de livraison
+remove_shipping_fees();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,23 +24,24 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <meta name="description" content="Achetez des prints et stickers uniques et de haute qualité. Explorez ma collection variée pour tous les goûts et toutes les occasions. Livraison rapide à l'international.">
-    <meta name="keywords" content="Prints, Stickers, Art, Boutique en ligne, Livraison internationale">
+    <meta name="description" content="Buy unique, high-quality prints and stickers. Explore my diverse collection for all tastes and occasions. Fast international shipping.">
+
     <!-- <link rel="canonical" href="https://www.idk.com" /> -->
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <!-- <meta property="og:url" content="https://www.idk.com/"> -->
     <meta property="og:title" content="Théo Kreicher Shop">
-    <meta property="og:description" content="Achetez des prints et stickers uniques et de haute qualité. Explorez notre collection variée pour tous les goûts et toutes les occasions. Livraison rapide à l'international.">
-    <!-- <meta property="og:image" content="URL_VERS_IMAGE"> -->
+    <meta property="og:description" content="Buy unique, high-quality prints and stickers. Explore my diverse collection for all tastes and occasions. Fast international shipping.">
+     <meta property="og:image" content="/assets/img/Favicon.svg"> 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <!-- <meta property="twitter:url" content="https://www.idk.com/"> -->
     <meta property="twitter:title" content="Théo Kreicher Shop">
-    <meta property="twitter:description" content="Achetez des prints et stickers uniques et de haute qualité. Explorez notre collection variée pour tous les goûts et toutes les occasions. Livraison rapide à l'international.">
-    <!-- <meta property="twitter:image" content="URL_VERS_IMAGE"> -->
-    <link rel="stylesheet" href="../../assets/css/header.css">
-    <link rel="stylesheet" href="../../assets/css/<?= $css ?>.css">
+    <meta property="twitter:description" content="Buy unique, high-quality prints and stickers. Explore my diverse collection for all tastes and occasions. Fast international shipping.">
+     <meta property="twitter:image" content="/assets/img/Favicon.svg"> 
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/<?= $css ?>.css">
+    <link rel="icon" type="image/x-icon" href="/assets/img/Favicon.svg">
 
 </head>
 
@@ -35,41 +50,40 @@ session_start();
 
         <nav>
             <div class="nav-gridbox-desktop">
-                <div class="logo-container-desktop">
+                <a href="/../index.php">
+                    <div class="logo-container-desktop">
 
-                </div>
+                    </div>
+                </a>
                 <div class="nav-menu-desktop">
                     <ul class="bold">
                         <li>
-                            <a href="">home</a>
+                            <a href="/index.php" data-page="index">home</a>
                         </li>
                         <li>
-                            <a href="../pages/shop.php">shop</a>
+                            <a href="/pages/about.php" data-page="about">about</a>
                         </li>
                         <li>
-                            <a href="../pages/about.php">about</a>
-                        </li>
-                        <li>
-                            <a href="../pages/contact.php">contact</a>
+                            <a href="/pages/contact.php" data-page="contact">contact</a>
                         </li>
                     </ul>
                 </div>
                 <div class="cart-container">
                     <?php
-                    if(isset($_SESSION['panier'])){
-                        $totalItems=0;
-                        if (sizeof($_SESSION['panier'])>0) {
+                    if (isset($_SESSION['panier'])) {
+                        $totalItems = 0;
+                        if (sizeof($_SESSION['panier']) > 0) {
                             foreach ($_SESSION['panier'] as $article) {
                                 $totalItems += $article['quantite'];
-                            }?>
-                        
+                            } ?>
+
                             <div class="cart-count-container">
-                                <p id="cart-count"><?=$totalItems?></p>
+                                <p id="cart-count"><?= $totalItems ?></p>
                             </div>
-                        <?php
-                        
+                    <?php
+
+                        }
                     }
-                }
                     ?>
                     <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="##235af0" stroke-width="0.00024000000000000003" class="cart">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -83,19 +97,22 @@ session_start();
                 </div>
             </div>
             <div class="nav-gridbox-mobile">
-                <div class="logo-container">
+                <a href="/../index.php">
+                    <div class="logo-container">
 
-                </div>
-                <div class="cart-container">
-                <?php
-                 if(isset($_SESSION['panier'])){
-                if (sizeof($_SESSION['panier'])>0) {?>
-                    <div class="cart-count-container">
-                        <p id="cart-count"><?=sizeof($_SESSION['panier'])?></p>
                     </div>
-                <?php
-                }}
-                ?>
+                </a>
+                <div class="cart-container">
+                    <?php
+                    if (isset($_SESSION['panier'])) {
+                        if (sizeof($_SESSION['panier']) > 0) { ?>
+                            <div class="cart-count-container">
+                                <p id="cart-count"><?= sizeof($_SESSION['panier']) ?></p>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
                     <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="##235af0" stroke-width="0.00024000000000000003" class="cart">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.288"></g>
@@ -123,99 +140,126 @@ session_start();
         <div class="nav-div">
             <div class="content">
                 <ul class="nav-menu bold bold">
-                    <li class="animated-item"><a href="">home</a></li>
-                    <li class="animated-item"><a href="../pages/shop.php">shop</a></li>
+                    <li class="animated-item"><a href="/index.php">home</a></li>
                     <li class="animated-item"><a href="../pages/about.php">about</a></li>
                     <li class="animated-item"><a href="../pages/contact.php">contact</a></li>
                 </ul>
                 <ul class="socials bold">
-                    <li class="animated-item"><a href="#">Instagram</a></li>
-                    <li class="animated-item"><a href="#">Dribbble</a></li>
-                    <li class="animated-item"><a href="#">Behance</a></li>
-                    <li class="animated-item"><a href="#">Twitter</a></li>
+                    <li class="animated-item"><a href="https://www.instagram.com/theokreicher/">Instagram</a></li>
+                    <li class="animated-item"><a href="https://dribbble.com/theorz">Dribbble</a></li>
+                    <li class="animated-item"><a href="https://www.behance.net/theorz">Behance</a></li>
+                    <li class="animated-item"><a href="https://twitter.com/theokreicher">Twitter</a></li>
                 </ul>
             </div>
         </div>
         <div class="cart-list">
-                <ul class="shopping-list">
-                    <?php
-                    if (isset($_SESSION['panier'])) {
-                        $total = 0;
-                            foreach ($_SESSION['panier'] as $article) {
-                                
-                            }
-                        
+            
+            <ul class="shopping-list">
+                <?php
+             
+                $total = 0;
+                $totalItems = 0;
+                if (isset($_SESSION['panier'])) {
+
+                    if (sizeof($_SESSION['panier'])) {
+
+
                         foreach ($_SESSION['panier'] as $article) {
                             echo '<li>';
 
-                            echo '<img src="' . $article['photoUrl'] . '" alt="' . $article['photoLegende'] . '">';
+                            echo '<img src="' . $article['photoUrl'] . '" alt="' . $article['photoLegende'] . '" class="product-img">';
                             echo '<div>';
                             echo '              <p>' . $article['libelle'] . ' #' .  $article['produitId'] . '</p>';
-                            echo '<p>' . $article['format'] . ' <span>' . $article['prix'] . ' €</span> <a href="/pages/article.php?name=' . $article['libelle'] . '&id=' . $article['produitId'] . '">article page</a></p>';
+                      
+                            echo '<p>' . $article['format'] . ' <span>' . $article['prix'] . ' €</span> <a href="#" data-variant-id="' . $article['variantId'] . '" class="remove-link-header"><img src="/assets/img/cross-delete.png" class="remove-img-header"></a> <a href="/pages/article.php?name=' . $article['libelle'] . '&id=' . $article['produitId'] . '" class="product-link">article page</a></p>';
                             echo '<p> x ' . $article['quantite'] . '</p>';
                             echo '</div>';
                             echo '</li>';
-                            
 
+                            $totalItems += $article['quantite'];
                             $total += $article['prix'] * $article['quantite'];
                         }
                     } else {
                         echo '<li class="no-articles">Your basket is empty</li>';
                     }
-                    ?>
-                </ul>
-                    <?php 
+                } else {
+                    echo '<li class="no-articles">Your basket is empty</li>';
+                }
+                ?>
+            </ul>
+            <?php
 
-                    ?>
+            ?>
             <div class="subtotal-container">
-                <p>recap : <span class="item-count"><?=$totalItems?> items </span></p>
+                <p>recap : <span class="item-count"><?= $totalItems ?> items </span></p>
                 <p>Subtotal : <span class="subtotal-nbr"><?= $total ?> €</span> </p>
             </div>
-            <div class="button-container">
+     <div class="button-container">
                 <a href="/pages/cartDetails.php"><button>cart details</button></a>
-                <a href="/pages/cartDetails.php" class="checkout"><button>checkout</button></a>
+                <?php
+                if (isset($_SESSION['panier'])) {
+
+                    if (sizeof($_SESSION['panier'])) {
+                ?>
+                        <a href="/pages/checkout.php" class="checkout"><button id="disabled">checkout</button></a>
+                    <?php } else { ?>
+                        <a href="/pages/checkout.php" class="checkout"><button id="disabled" disabled>checkout</button></a>
+                <?php
+                    }
+                }else { ?>
+                    <a href="/pages/checkout.php" class="checkout"><button id="disabled" disabled>checkout</button></a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </header>
     <aside class="socials">
         <ul>
             <li>
-                <a href="#">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#235af0" class="svg-logo">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#235af0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="instagram"></path>
-                            <path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z" stroke="#235af0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="instagram"></path>
-                            <path d="M17.6361 7H17.6477" stroke="#235af0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="instagram"></path>
-                        </g>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="dribbble" class="svg-logo">
-                        <g data-name="<Group>">
-                            <circle cx="12" cy="12" r="11.5" fill="none" stroke="#235af0" stroke-linecap="round" stroke-linejoin="round" data-name="<Path>" class="behance"></circle>
-                            <g data-name="<Group>">
-                                <path fill="none" stroke="#235af0" stroke-linecap="round" stroke-linejoin="round" d="M7.63 1.36c5.5 6.64 8.37 13 9.37 21M.55 10.88C10.39 10.66 16 9.1 20.22 4M4.11 20.37c5.29-8.05 11.78-9.28 19.31-7.05" data-name="<Path>" class="dribbble"></path>
+                <a href="https://www.instagram.com/theokreicher/">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="64px" height="64px">
+                        <g fill="#235af0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                            <g transform="scale(8,8)">
+                                <path d="M11.46875,5c-3.55078,0 -6.46875,2.91406 -6.46875,6.46875v9.0625c0,3.55078 2.91406,6.46875 6.46875,6.46875h9.0625c3.55078,0 6.46875,-2.91406 6.46875,-6.46875v-9.0625c0,-3.55078 -2.91406,-6.46875 -6.46875,-6.46875zM11.46875,7h9.0625c2.47266,0 4.46875,1.99609 4.46875,4.46875v9.0625c0,2.47266 -1.99609,4.46875 -4.46875,4.46875h-9.0625c-2.47266,0 -4.46875,-1.99609 -4.46875,-4.46875v-9.0625c0,-2.47266 1.99609,-4.46875 4.46875,-4.46875zM21.90625,9.1875c-0.50391,0 -0.90625,0.40234 -0.90625,0.90625c0,0.50391 0.40234,0.90625 0.90625,0.90625c0.50391,0 0.90625,-0.40234 0.90625,-0.90625c0,-0.50391 -0.40234,-0.90625 -0.90625,-0.90625zM16,10c-3.30078,0 -6,2.69922 -6,6c0,3.30078 2.69922,6 6,6c3.30078,0 6,-2.69922 6,-6c0,-3.30078 -2.69922,-6 -6,-6zM16,12c2.22266,0 4,1.77734 4,4c0,2.22266 -1.77734,4 -4,4c-2.22266,0 -4,-1.77734 -4,-4c0,-2.22266 1.77734,-4 4,-4z"></path>
                             </g>
                         </g>
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="behance" class="svg-logo">
-                        <path d="M28 1c1.654 0 3 1.346 3 3v24c0 1.654-1.346 3-3 3H4c-1.654 0-3-1.346-3-3V4c0-1.654 1.346-3 3-3h24m0-1H4C1.8 0 0 1.8 0 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4z" stroke="#235af0" stroke-width="0.8" fill="#235af0" class="behance"></path>
-                        <path d="M14.192 15.573s1.773-.135 1.773-2.256c0-2.12-1.203-3.165-3.041-3.165l-6.297-.01v11.715h6.443s3.222.102 3.222-3.514c.001 0 .238-2.77-2.1-2.77zM8.971 11.9h3.222s1.102.018 1.102 1.447c0 1.481-1.102 1.481-1.102 1.481H8.971V11.9zm3.515 8.2H8.971v-3.514h3.514s1.757.018 1.757 1.757-1.503 1.757-1.756 1.757zM21.272 13.071c-4.401 0-4.393 4.393-4.393 4.393s-.293 4.393 4.393 4.393c0 0 4.1 0 4.1-3.514h-2.343s0 1.757-1.757 1.757c0 0-1.757 0-1.757-2.343h5.857c0-1.171 0-4.686-4.1-4.686zm-1.758 3.515s-.039-1.757 1.757-1.757c1.795 0 1.757 1.757 1.757 1.757h-3.514zM18.929 11.314h4.686v1.171h-4.686z" fill="none" stroke-width="0.8" stroke="#235af0" class="behance"></path>
+                <a href="https://dribbble.com/theorz">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="64px" height="64px" id="dribble-logo">
+                        <g fill="#235af0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                            <g transform="scale(8,8)">
+                                <path d="M16,4c-6.61719,0 -12,5.38281 -12,12c0,6.61719 5.38281,12 12,12c6.61719,0 12,-5.38281 12,-12c0,-6.61719 -5.38281,-12 -12,-12zM16,6c2.53516,0 4.83203,0.95313 6.59375,2.5c-0.1875,0.26172 -0.44141,0.57813 -0.84375,0.96875c-0.85547,0.82813 -2.22266,1.82422 -4.3125,2.59375c-1.41406,-2.61328 -2.80078,-4.57812 -3.71875,-5.8125c0.73047,-0.16797 1.49609,-0.25 2.28125,-0.25zM11.75,6.9375c0.82031,1.07422 2.28125,3.06641 3.75,5.71875c-4.06641,1.07813 -7.79687,1.21484 -9.28125,1.21875c0.66406,-3.08984 2.74219,-5.63281 5.53125,-6.9375zM23.96875,9.96875c1.21875,1.61328 1.97656,3.60938 2.03125,5.78125c-0.89062,-0.19922 -2.20312,-0.39453 -3.90625,-0.40625c-0.88672,-0.00391 -1.89062,0.05859 -2.96875,0.1875c-0.25,-0.57031 -0.51953,-1.12109 -0.78125,-1.65625c2.24219,-0.85937 3.76953,-1.99219 4.78125,-2.96875c0.34375,-0.33594 0.61328,-0.64453 0.84375,-0.9375zM16.40625,14.46875c0.23047,0.46484 0.46484,0.94141 0.6875,1.4375c-4.27344,1.18359 -7.34375,4.80859 -8.65625,6.625c-1.51172,-1.75 -2.4375,-4.03125 -2.4375,-6.53125c0,-0.04297 0,-0.08203 0,-0.125c1.35156,0.01563 5.64844,-0.07812 10.40625,-1.40625zM22.09375,17.3125c1.78516,0 3.01953,0.25 3.75,0.4375c-0.46484,2.66406 -1.96875,4.94922 -4.09375,6.4375c-0.39844,-2.39062 -1.05469,-4.66406 -1.84375,-6.75c0.78906,-0.07812 1.53516,-0.125 2.1875,-0.125zM17.875,17.78125c0.89844,2.28125 1.65234,4.78516 2.03125,7.4375c-1.19531,0.50391 -2.52344,0.78125 -3.90625,0.78125c-2.29297,0 -4.41016,-0.76953 -6.09375,-2.0625c1.02734,-1.40625 4.04688,-5.14844 7.96875,-6.15625z"></path>
+                            </g>
+                        </g>
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" id="twitter" class="svg-logo">
-                        <path d="M22.5,3.5888672c0.0002441-0.2761841-0.2234497-0.5002441-0.4996338-0.5004883c-0.0898438-0.000061-0.1779785,0.0240479-0.255249,0.0698242c-0.7038574,0.4194946-1.4684448,0.7275391-2.2666016,0.9130859c-0.8716431-0.8326416-2.0318604-1.2953491-3.2373047-1.2910156c-2.6089478,0.0032349-4.7229004,2.1176758-4.7255859,4.7265625c0,0.1347656,0.0058594,0.2714844,0.0185547,0.4091797C8.5112915,7.5945435,5.7377319,6.09198,3.8173828,3.7353516c-0.175354-0.2139282-0.4909668-0.2451782-0.704895-0.0698242c-0.0467529,0.0383301-0.0861816,0.0848389-0.116394,0.137207C2.581604,4.5263672,2.3637695,5.3458252,2.3642578,6.1797485C2.362915,7.0950928,2.6275635,7.9910889,3.1259766,8.7587891c-0.0195312-0.0107422-0.039978-0.0214844-0.0595703-0.0332031c-0.1596069-0.0778809-0.3484497-0.065979-0.4970703,0.03125c-0.1546631,0.1004028-0.2477417,0.272583-0.2470703,0.4570312C2.3181152,9.3320923,2.3253174,9.4505005,2.34375,9.5673218c0.0957642,1.3353882,0.7573853,2.5662842,1.8183594,3.3828735c-0.0925903,0.0269165-0.1751709,0.0805664-0.2373047,0.1542969c-0.1132812,0.1314087-0.1502686,0.3121948-0.0976562,0.4775391c0.468811,1.461731,1.62146,2.6026611,3.0878296,3.0566406c-1.4753418,0.8259277-3.1745605,1.1630249-4.8535156,0.9628906c-0.274231-0.0336304-0.5238037,0.161438-0.5574341,0.4356689c-0.0233154,0.1904297,0.06427,0.3773804,0.2254639,0.4813232C3.7386475,19.812439,6.0780029,20.5003662,8.4677734,20.5c5.5748291,0.0617676,10.4938965-3.6341553,11.9863281-9.0058594c0.3389282-1.1375122,0.5119019-2.3179321,0.5136719-3.5048828c0-0.1201172,0-0.2451172-0.0029297-0.3720703C22.0166626,6.5477295,22.5733032,5.0870972,22.5,3.5888672z M20.0761719,7.1220703c-0.0820923,0.0969849-0.1240234,0.2217407-0.1171875,0.3486328c0.0087891,0.1767578,0.0087891,0.3525391,0.0087891,0.5185547c-0.0020142,1.0913086-0.1611938,2.1766968-0.4726562,3.2226562C18.1668701,16.1845703,13.6137085,19.6067505,8.4677734,19.5c-1.5258789,0.0005493-3.036377-0.3045654-4.4423828-0.8974609c1.6526489-0.1833496,3.220459-0.8276367,4.5244141-1.859375c0.2172241-0.1707764,0.2548828-0.4852905,0.0841064-0.7025146C8.5411377,15.9225464,8.4001465,15.852417,8.25,15.8496094c-1.3014526-0.0209351-2.4966431-0.7225342-3.1494141-1.8486328c0.4240723,0.0012817,0.8461914-0.057251,1.2539062-0.1738281c0.2652588-0.0761719,0.4185181-0.3529053,0.3423462-0.6181641C6.6450806,13.0286255,6.4966431,12.8924561,6.3125,12.8564453c-1.463562-0.2926636-2.6086426-1.4346924-2.9052734-2.8974609c0.4245605,0.1375122,0.8664551,0.2141113,1.3125,0.2275391c0.2264404,0.0168457,0.4329224-0.1294556,0.4921875-0.3486328C5.2793579,9.625,5.1976929,9.3931885,5.0117188,9.2695312C3.9785156,8.581604,3.3596802,7.4209595,3.3642578,6.1796875C3.3639526,5.7672119,3.4312134,5.3574829,3.5634766,4.9667969C5.7807617,7.361084,8.84552,8.7946777,12.1044922,8.9619141c0.1580811,0.0167236,0.3132935-0.0512085,0.4082031-0.1787109c0.1005859-0.1207275,0.138855-0.2814941,0.1035156-0.4345703c-0.0661621-0.2757568-0.0999756-0.5582275-0.1005859-0.8417969c0.0019531-2.0569458,1.6686401-3.7240601,3.7255859-3.7265625c1.0283203-0.0029297,2.0109863,0.4244995,2.710022,1.1787109c0.1178589,0.1260986,0.2926025,0.182251,0.4619141,0.1484375c0.7096558-0.1395874,1.3995972-0.3652344,2.0546265-0.671875C21.2976074,5.4550171,20.81073,6.3949585,20.0761719,7.1220703z" stroke="#235af0" fill="#235af0" stroke-width="0" class="twitter"></path>
+                <a href="https://www.behance.net/theorz">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="64px" height="64px">
+                        <g fill="#235af0" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                            <g transform="scale(4,4)">
+                                <path d="M43.462,52h-22.924c-2.28,0 -4.424,-0.888 -6.037,-2.5c-1.612,-1.613 -2.501,-3.757 -2.501,-6.039v-22.922c0,-2.281 0.889,-4.426 2.501,-6.038c1.613,-1.612 3.757,-2.5 6.037,-2.5h22.924c2.28,0 4.424,0.888 6.037,2.5c1.612,1.612 2.501,3.756 2.501,6.038v22.923c0,2.281 -0.889,4.426 -2.501,6.038c-1.613,1.612 -3.757,2.5 -6.037,2.5zM20.538,16c-1.212,0 -2.352,0.472 -3.209,1.33c-0.857,0.856 -1.329,1.996 -1.329,3.209v22.923c0,1.213 0.472,2.353 1.329,3.209c0.857,0.857 1.997,1.33 3.209,1.33h22.924c1.212,0 2.352,-0.472 3.209,-1.33c0.857,-0.857 1.329,-1.997 1.329,-3.21v-22.922c0,-1.213 -0.472,-2.353 -1.329,-3.209c-0.858,-0.858 -1.997,-1.33 -3.209,-1.33z" fill-rule="nonzero"></path>
+                                <path d="M43.487,24.999h-6c-0.553,0 -1,-0.448 -1,-1c0,-0.552 0.447,-1 1,-1h6c0.553,0 1,0.448 1,1c0,0.552 -0.447,1 -1,1z" fill-rule="nonzero"></path>
+                                <path d="M28.793,31.345c0.951,0.326 2.695,1.252 2.695,4.081c0,4.384 -4.756,4.573 -5.39,4.574h-7.61v-16.001h7.293c0.792,0 4.707,-0.134 4.707,4c0,2.198 -1.062,3.02 -1.695,3.346zM22.488,26.999v3h2.619c0.357,0 1.547,-0.226 1.547,-1.565c0,-1.34 -1.548,-1.435 -1.785,-1.435zM25.418,36.981c0.254,0 2.037,-0.098 2.037,-1.916c0,-1.82 -1.401,-2.065 -2.037,-2.065h-2.93v3.981z" fill-rule="evenodd"></path>
+                                <path d="M43.141,36h3.182c-0.563,1.868 -2.591,3.999 -5.667,3.999c-2.028,0 -6.169,-1.127 -6.169,-6.5c0,-5.807 4.479,-6.5 6,-6.5c5.375,0 6.125,4.5 6,8v0.001h-2.68v-0.001h-5.321c0,0 0.512,1.982 2.512,1.982c0.992,0 1.69,-0.488 2.143,-0.981zM40.573,29.6c-1.326,-0.023 -2.823,1.15 -2.788,2.4h5.408c-0.085,-0.775 -0.338,-1.394 -0.761,-1.781c-0.422,-0.387 -0.934,-0.603 -1.859,-0.619z" fill-rule="evenodd"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/theokreicher">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="64px" height="64px">
+                        <g fill="#235af0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                            <g transform="scale(10.66667,10.66667)">
+                                <path d="M22,3.999c-0.78,0.463 -2.345,1.094 -3.265,1.276c-0.027,0.007 -0.049,0.016 -0.075,0.023c-0.813,-0.802 -1.927,-1.299 -3.16,-1.299c-2.485,0 -4.5,2.015 -4.5,4.5c0,0.131 -0.011,0.372 0,0.5c-3.353,0 -5.905,-1.756 -7.735,-4c-0.199,0.5 -0.286,1.29 -0.286,2.032c0,1.401 1.095,2.777 2.8,3.63c-0.314,0.081 -0.66,0.139 -1.02,0.139c-0.581,0 -1.196,-0.153 -1.759,-0.617c0,0.017 0,0.033 0,0.051c0,1.958 2.078,3.291 3.926,3.662c-0.375,0.221 -1.131,0.243 -1.5,0.243c-0.26,0 -1.18,-0.119 -1.426,-0.165c0.514,1.605 2.368,2.507 4.135,2.539c-1.382,1.084 -2.341,1.486 -5.171,1.486h-0.964c1.788,1.146 4.065,2.001 6.347,2.001c7.43,0 11.653,-5.663 11.653,-11.001c0,-0.086 -0.002,-0.266 -0.005,-0.447c0,-0.018 0.005,-0.035 0.005,-0.053c0,-0.027 -0.008,-0.053 -0.008,-0.08c-0.003,-0.136 -0.006,-0.263 -0.009,-0.329c0.79,-0.57 1.475,-1.281 2.017,-2.091c-0.725,0.322 -1.503,0.538 -2.32,0.636c0.834,-0.5 2.019,-1.692 2.32,-2.636zM18,8.999c0,4.08 -2.957,8.399 -8.466,8.943c0.746,-0.529 1.466,-1.28 1.466,-1.28c0,0 -3,-2.662 -3.225,-6.14c1.035,0.316 2.113,0.477 3.225,0.477h2v-2.5c0,-0.001 0,-0.001 0,-0.001c0.002,-1.38 1.12,-2.498 2.5,-2.498c1.381,0 2.5,1.119 2.5,2.5c0,0 0,0.42 0,0.499z"></path>
+                            </g>
+                        </g>
                     </svg>
                 </a>
             </li>

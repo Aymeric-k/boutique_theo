@@ -1,0 +1,38 @@
+Début du traitement de la création/mise à jour d'un code promo
+Code Promo ID : 0
+Vérification si le code promo existe : Nouveau code promo
+Free Shipping sélectionné : 1
+Date de début UTC : 2024-12-18 14:40:00
+Date de fin UTC : 2024-12-26 14:40:00
+Bind des données : Array
+(
+    [codePromo] => livraison
+    [codePromoDescription] => livraisonznze
+    [codePromoValeur] => 0
+    [codePromoDateDebut] => 2024-12-18 14:40:00
+    [codePromoDateFin] => 2024-12-26 14:40:00
+    [freeShipping] => 1
+)
+
+Requête préparée pour insertion
+Requête SQL exécutée avec succès
+Redirection vers code_promos.php
+Début du traitement de la création/mise à jour d'un code promo
+Code Promo ID : 0
+Vérification si le code promo existe : Nouveau code promo
+Free Shipping sélectionné : 1
+Date de début UTC : 2024-12-18 14:46:00
+Date de fin UTC : 2024-12-26 14:46:00
+Bind des données : Array
+(
+    [codePromo] => livraisone
+    [codePromoDescription] => fqsfqs
+    [codePromoValeur] => 0
+    [codePromoDateDebut] => 2024-12-18 14:46:00
+    [codePromoDateFin] => 2024-12-26 14:46:00
+    [freeShipping] => 1
+)
+
+Requête préparée pour insertion
+Requête SQL exécutée avec succès
+Redirection vers code_promos.php

@@ -1,5 +1,14 @@
 <?php
 session_start();
+// Définir le chemin du fichier de logs
+$logFile = __DIR__ . '/../logs.log';
+
+// Fonction pour enregistrer les logs
+function log_message($message)
+{
+    global $logFile;
+    error_log($message . "\n", 3, $logFile);
+}
 
 $response = ["success" => false];
 
@@ -30,7 +39,7 @@ if (isset($_GET['variantId'])) {
 } else {
     $response["error"] = "Clé d'article non fournie";
 }
-
+log_message("Requête GET variantId: " . $_GET['variantId']);
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>

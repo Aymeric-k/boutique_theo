@@ -12,7 +12,7 @@ $sql = $db->prepare('
 ');
 $sql->execute(['produitId' => $_GET['id']]);
 $results = $sql->fetchAll();
-
+include '../variables.php';
 
 $item = $results[0];
 $title = $item['produitLibelle'];
@@ -58,22 +58,22 @@ INNER JOIN
     categorie ON categorie.categorieId = produits.categorieId 
 WHERE 
     produits.produitId != :produitId
-AND 
-    categorie.categorieId = :categorie
-    ORDER BY RAND()
+    AND produits.produitEnAvant = 1
+
+    ORDER BY produits.produitEnAvantOrdre ASC
 LIMIT 4;
 ');
-$sqlothers->execute(['produitId' => $_GET['id'], 'categorie' => $item['categorieId']]);
+$sqlothers->execute(['produitId' => $_GET['id']]);
 $others = $sqlothers->fetchAll();
 
-
 ?>
+
 
 
 <main>
     <nav aria-label="Breadcrumb">
         <ol class="breadcrumb">
-            <li><a href="/pages/shop.php">Shop</a></li>
+            <li><a href="/index.php">Shop</a></li>
             <li aria-current="page"><?= $item['produitLibelle'] ?></li>
         </ol>
     </nav>
@@ -114,7 +114,7 @@ $others = $sqlothers->fetchAll();
                 </div>
                 <form action="" method="post" id="formAddToCart">
                     <div class="variants">
-                        <label for="size" id="sizeLabel">Size :</label>
+                        <label for="size" id="sizeLabel">Size </label>
                         <?php
                         if (sizeof($variants) > 1) {
 
@@ -133,7 +133,7 @@ $others = $sqlothers->fetchAll();
                         ?>
                     </div>
                     <div class="quantity-container">
-                        <label for="quantity">Quantity :</label>
+                        <label for="quantity">Quantity </label>
                         <button type="button" id="decrementBtn">-</button>
                         <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
                         <button id="incrementBtn" type="button">+</button>
@@ -144,7 +144,7 @@ $others = $sqlothers->fetchAll();
                     </div>
                 </form>
                 <div class="description">
-                    <p>Descrition :</p>
+                    
                     <?php
                     echo '<p>' . nl2br($item['produitDescription']) . '</p>';
                     ?>

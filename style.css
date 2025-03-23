@@ -1,0 +1,265 @@
+@import 'https://fonts.googleapis.com/css?family=Press+Start+2P';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    user-select: none;
+}
+
+canvas{
+    display: block;
+    margin: 0 auto;
+    /* width: 100%; */
+    /* background-image: url(./assets/img/Gradin.jpg); */
+}
+
+form{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 30%;
+    /* top: 30%; */
+    padding: 30px 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    /* opacity: 1; */
+}
+
+input{
+    width: 200px;
+    height: 25px;
+    margin: 0 auto 20px auto;
+}
+
+label{
+    margin: 0 auto;
+}
+
+#submit-btn{
+    width: 80px;
+}
+
+.row-display{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+footer{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Pour empêcher le défilement vertical */
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(./assets/img/mnsBG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#texte {
+    font-family: 'Press Start 2P', sans-serif;
+    display: flex;
+    justify-content: space-between; /* Espacez les éléments à gauche et à droite */
+    align-items: center;
+    width: 80%; /* Largeur de la zone de texte par rapport à la largeur de la fenêtre */
+    padding: 10px; /* Ajoutez un peu d'espacement autour du contenu */
+    flex-wrap: wrap;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#quirin {
+    transform: scaleX(-1);
+}
+
+img{
+    width: 300px;
+}
+
+#dialogue {
+    flex-grow: 1; /* Faites en sorte que le texte occupe tout l'espace vertical restant */
+    margin: 0 10px; /* Ajoutez des marges aux côtés du texte */
+    background-color: rgb(120, 120, 120,0.8);
+    height: 200px;
+    padding: 20px 60px;
+    font-size: larger;
+    border: 3px solid #efefef;
+    font-family: 'Press Start 2P', sans-serif;
+    color: #efefef;
+}
+
+#click{
+    position: absolute;
+    bottom: 20px;
+    right: 20%;
+    margin: 10px;
+    color: #efefef;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+#firstTeam{
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+}
+#firstTeam img{
+    height: 50%;
+}
+
+#form{
+    display: none;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* top: 20%; */
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: #e03c00;
+}
+
+.submit-button{
+    width: 30%;
+    height: 40px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-color: #421f0b;
+    cursor:not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+/* Style the message box with rugby colors */
+.form-div {
+    color: #EFEFEF;
+    background-color: #222;
+    border: 1px solid #EFEFEF;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* border: 1px solid #193821; */
+    border-radius: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+}
+
+#form-title{
+    text-align: center;
+    color: #efefef;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+    padding: 20px 0;
+}
+
+#leader-bord{
+    background-color: #222;
+}
+
+.column-display{
+    color: #EFEFEF;
+    background-color: #222;
+    border: 1px solid #EFEFEF;
+    margin: 0 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+
+}
+
+#score-display{
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+    color: #EFEFEF;
+    background-color: #222;
+    border: 1px solid #EFEFEF;
+    margin: 0 20px;
+    padding: 5px;
+}
+
+.modal{
+    position: absolute;
+    width: 30%;
+    top: 30%;
+    left: 35%;
+    background-color: #efefef;
+    color: #222;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+@media(max-width:1024px){
+    img{
+        width: 40%;
+    }
+    #firstTeam{
+        width: 50%;
+    }
+    form{
+        width: 60%;
+    }
+    .modal{
+        top: 33%;
+    }
+}
+
+@media(max-width:568px){
+    img{
+        width: 50%;
+    }
+    #dialogue{
+        font-size: 0.8rem;
+        line-height: 15px;
+        padding: 20px 30px;
+    }
+    #click{
+        font-size: 1rem;
+    }
+    form{
+        width: 90%;
+    }
+    .modal{
+        width: 80%;
+        top: 20%;
+        left: 10%;
+    }
+}

@@ -8,12 +8,20 @@ if (isset($input['variantId']) && isset($input['newQuantity'])) {
     $variantId = $input['variantId'];
     $newQuantity = $input['newQuantity'];
 
-    if (isset($_SESSION['panier'][$variantId])) {
-        $_SESSION['panier'][$variantId]['quantite'] = $newQuantity;
-        $newTotal = 0;
-        foreach ($_SESSION['panier'] as $item) {
-            $newTotal += $item['prix'] * $item['quantite'];
+    $found = false;
+    $newTotal = 0;
+
+    // Parcours de $_SESSION['panier'] pour trouver le bon variantId
+    foreach ($_SESSION['panier'] as &$item) {
+        if ($item['variantId'] === $variantId) {
+            $item['quantite'] = $newQuantity;
+            $found = true;
         }
+        // Calcul du nouveau total
+        $newTotal += $item['prix'] * $item['quantite'];
+    }
+
+    if ($found) {
         echo json_encode(['status' => 'success', 'newTotal' => $newTotal]);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Variant ID not found in cart']);

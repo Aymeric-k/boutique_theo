@@ -12,12 +12,16 @@ if (!isset($_SESSION['panier'])) {
 }
 ?>
 <main>
+        
     <section class="article-list">
         <ul>
         <?php 
         $total = 0;
-        foreach ($_SESSION['panier'] as $variantId => $item){ 
+        $totalPoids =0;
+        foreach ($_SESSION['panier'] as $item){ 
+             $variantId = $item['variantId'];
             echo '<li>';
+        
             echo '<img src="'.$item['photoUrl'].'" alt="'.$item['photoLegende'].'">';          
             echo '<div>';
                 echo '<p class ="top-p"> <span>'.$item['libelle'].'</span> #'.$item['produitId'].'</p>';
@@ -32,8 +36,14 @@ if (!isset($_SESSION['panier'])) {
                 echo '</div> ';
                 echo '<p class ="price">'.$item['prix'].' €</p>';
                 $total += $item['prix']*$item['quantite'];
+                $totalPoids += $item['poids']*$item['quantite'];
+
             echo '</div>';
-        }?>
+        }
+        if($total == 0){
+            echo '<li class="no-articles">Your basket is empty</li>';
+        }
+        ?>
         </ul>
     </section>
         <div class="subtotal">
@@ -41,8 +51,13 @@ if (!isset($_SESSION['panier'])) {
             <p>Taxes and shipping calculated at checkout</p>
         </div>
         <div class="button-container-cart">
-            <a href=""><button class="clear-cart">clear the cart</button></a>
-            <a href="#" class="checkout"><button>checkout</button></a>
+        <?php if ($total > 0): ?>
+        <button class="clear-cart">clear the cart</button>
+        <a href="./checkout.php" class="checkout"><button>checkout</button>
+    <?php else: ?>
+        <button class="clear-cart" disabled>clear the cart</button>
+        <button class="checkout" disabled>checkout</button>
+    <?php endif; ?>
         </div>
 </main>
 <script src="../assets/scripts/cartDetails.js"></script>

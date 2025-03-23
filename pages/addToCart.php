@@ -13,11 +13,10 @@ $response = ["success" => false];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql ='SELECT variantPrix, variantFormat, photoUrl, photoLegende, produitLibelle from variant_produit INNER JOIN photo on variant_produit.produitId =photo.produitId INNER JOIN produits ON variant_produit.produitId = produits.produitId WHERE variantId = :size';
+    $sql ='SELECT variantPrix, variantFormat, variantPoids, photoUrl, photoLegende, produitLibelle, variantId, categorieLibelle from variant_produit INNER JOIN photo on variant_produit.produitId =photo.produitId INNER JOIN produits ON variant_produit.produitId = produits.produitId INNER JOIN categorie ON produits.categorieId = categorie.categorieId WHERE variantId = :size AND photo.photoOrdre = 1';
     $request = $db->prepare($sql);
     $request->execute(['size' => $_POST['size']]);
     $productInfos = $request->fetch();
-    echo'';
     $produitId = $_POST['produitId'];
     $quantite = $_POST['quantity'];
     $variantId = trim($_POST['size']);
@@ -34,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'photoUrl'=> $productInfos['photoUrl'],
             'photoLegende'=> $productInfos['photoLegende'],
             'format' => $productInfos['variantFormat'],
-            'libelle' => $productInfos['produitLibelle']
+            'libelle' => $productInfos['produitLibelle'],
+            'poids' => $productInfos['variantPoids'],
+            'category' => $productInfos['categorieLibelle']
         ];
     }
 
@@ -42,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response["panier"] = $_SESSION['panier'];
 
 }
-
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>

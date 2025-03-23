@@ -1,0 +1,711 @@
+Pays destination (ID): 1
+Grille tarifaire France sélectionnée
+Frais de port calculé : 179 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b141MoqFHQe4o5J9rTfnvc5xp7YUvXgeXHJf0ZbskMEj3mFs4S4MVUyecI
+Pays destination (ID): 1
+Grille tarifaire France sélectionnée
+Frais de port calculé : 308 pour un poids maximum de 100
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b1ej1IAA8WbIHiwsZ0HOKzeJCF9VaP1HbGHnFWbhD62agXkL9tfSx22O1T
+Pays destination (ID): 2
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 695 pour un poids maximum de 100
+Code promo soumis : adma
+Code promo invalide ou expiré.
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b1Fa9WkCuunwOFFwYq0Az5pbcCgNlsTAgFi8YJf8OYQr3lVCberHk62QtS
+Pays destination (ID): 2
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 695 pour un poids maximum de 100
+Code promo soumis : adma
+Code promo valide trouvé : Array
+(
+    [codePromoId] => 5
+    [codePromo] => adma
+    [codePromoDescription] => fqsfqs
+    [codePromoValeur] => 0
+    [freeShipping] => 1
+    [codePromoDateDebut] => 2024-12-19 14:49:00
+    [codePromoDateFin] => 2024-12-26 14:49:00
+)
+
+Réduction appliquée : 0%
+Le code promo offre les frais de livraison. Frais de port = 0.
+Session Stripe créée avec succès. ID : cs_test_b1njzk5AAvqeEXc3M22eB7xqcJGlRlJ3U2muzwrOEZiTkxG4jHgvmBn7Me
+Pays destination (ID): 1
+Grille tarifaire France sélectionnée
+Frais de port calculé : 308 pour un poids maximum de 100
+Code promo soumis : livraisone
+Code promo valide trouvé : Array
+(
+    [codePromoId] => 4
+    [codePromo] => livraisone
+    [codePromoDescription] => fqsfqs
+    [codePromoValeur] => 0
+    [freeShipping] => 1
+    [codePromoDateDebut] => 2024-12-18 14:46:00
+    [codePromoDateFin] => 2024-12-26 14:46:00
+)
+
+Réduction appliquée : 0%
+Le code promo offre les frais de livraison. Frais de port = 0.
+Session Stripe créée avec succès. ID : cs_test_b1aj1Xu0cEZPyWSXcSVXgpimOUsQQx0OS0aJjNOHUZOjyLkrkgdQSQGZSm
+Pays destination (ID): 2
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 695 pour un poids maximum de 100
+Code promo soumis : Fivze g
+Code promo invalide ou expiré.
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b1dShYop1O23BPUaZojulkyHWHcFDhAPf2T5vfTwB4sURrAZJGaAeOmTGi
+Pays destination (ID): 1
+Grille tarifaire France sélectionnée
+Frais de port calculé : 308 pour un poids maximum de 100
+Code promo soumis : Five g
+Code promo invalide ou expiré.
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b1tnaGBZd93wTila7IyhON5BEekmP5ajYMC8PxbPwCibUSucuB3SUpyj8y
+Pays destination (ID): 2
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 695 pour un poids maximum de 100
+Code promo soumis : Fiveg
+Code promo valide trouvé : Array
+(
+    [codePromoId] => 1
+    [codePromo] => Fiveg
+    [codePromoDescription] => livraison
+    [codePromoValeur] => 10
+    [freeShipping] => 0
+    [codePromoDateDebut] => 2024-11-21 15:58:00
+    [codePromoDateFin] => 2028-01-20 15:58:00
+)
+
+Réduction appliquée : 10%
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_b1tXzvisrxa4YEv93FGXXBlS48sHbzpefAOxGo5ebxiTTo0ETs2ZFvIkcI
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a18v4ptGX2mj5BFbJ04bT9Bufgsh1JHhxTVJPOtPbZtajySimSEkO34QWT
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1DEqxGzqHP9rG9rnL6JLGZSX3OSnuZi9X107azh6yLa6glVJZx3wYiaUK
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1wc5hIJPeySyTFVihYWYsmxDW37OBodyjlxkrMwUp7yG7eO6z8vAwBka6
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1Or2JzoRCUIn2MOxgBe8DaQYSrUqXZg8pi3p10qEY0fmqUcTvVmB9iZj9
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1t0F0Zqjf5CwnbOwDQN6hqsprWm7mARLYRUyV6HxLSS2f1airtfasGgup
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1ici7zD4BJXLKzZAFZsynUw0pUlhyRwobzPaP87sILvKqINGRGBoKJYWH
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1AkKUo6uIwVUC6fJakqekqTkbX0jIlE3GSAo0cb4eGKZIp9A3D8CPSPIX
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a13kyUlIF2O3HJUHJUNLW0xqnuRtPVWZ3bPMB7bYCluaffddtzCBneqlNQ
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1g5NtRAghczFd56dHdfRbXCTlTrGgyq5pMTeJDDEQpPX8dQcejWHhbQrh
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a17gQi366cCZt23YLdLVzeSCep8DfQ6gLkFaCgltAFYvCkk7WaxgsTyvJk
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1OKZFPhz3LD27OMRbC1zwPTnjIDBL4LZLADHiFRl5Kid82OLFmDx7kGb1
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Méthode non POST utilisée.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1T9I64wRbpF3AHuBfERJe8J425NnJ8UjicrS9vB37IkHsuqHzoina7IRZ
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1dI9MYP7rMvmYPWFDPiU4LYJIAIMw4bvEJjEjdV4xYUBuJTHpL7PB6xxy
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1Ju4xN2hEWl1C6kXUHSBbHkVTHgg5AhoIaZMLEBHYZcPqCrqIIbQ1aCb6
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Méthode non POST utilisée.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Méthode non POST utilisée.
+Pays destination (ID): 
+Grille tarifaire Europe sélectionnée
+Frais de port calculé : 476 pour un poids maximum de 20
+Frais fixes ajoutés aux frais de port : 200 centimes.
+Session Stripe créée avec succès. ID : cs_test_a1U6NlshJ290LRpvv7bk5PrUo4dIT8ReKzxH1BAW2k8vZLX1pZW2vsjoQg
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
+Formulaire soumis avec la méthode POST.
+Captcha Token: 
+ReCAPTCHA response: stdClass Object
+(
+    [success] => 
+    [error-codes] => Array
+        (
+            [0] => invalid-input-response
+        )
+
+)
+
+Captcha non valide ou score insuffisant.
